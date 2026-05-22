@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7B2D3B">
+  <title>Batata Cofi — Café de especialidad en Avellaneda</title>
+  <meta name="description" content="Café de especialidad y pastelería artesanal en Florentino Ameghino 908, Avellaneda. Martes a domingos.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Batata Cofi — Café de especialidad en Avellaneda">
+  <meta property="og:description" content="Café de especialidad y pastelería artesanal. Pet friendly. Martes a domingos.">
+  <meta property="og:type" content="restaurant.cafe">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:image" content="img/hero.jpg">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;0,500;0,600;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles-v25.css?v=25b">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Batata Cofi",
+    "description": "Café de especialidad y pastelería artesanal. Primer café de especialidad de Avellaneda.",
+    "image": "img/hero.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Florentino Ameghino 908",
+      "addressLocality": "Avellaneda",
+      "addressRegion": "Provincia de Buenos Aires",
+      "postalCode": "B1870",
+      "addressCountry": "AR"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "08:30", "closes": "19:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "14:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "16:00", "closes": "19:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "16:00", "closes": "19:30" }
+    ],
+    "servesCuisine": ["Coffee", "Bakery", "Breakfast"],
+    "priceRange": "$$",
+    "currenciesAccepted": "ARS",
+    "url": "https://batatacofi.com",
+    "sameAs": ["https://www.instagram.com/batata.cofi/"],
+    "telephone": "+5491134316255",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -34.6620,
+      "longitude": -58.3650
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+    <div class="site-nav__inner">
+      <a href="#" class="site-nav__logo" aria-label="Volver al inicio">
+        <img src="img/logo.png" alt="Batata Cofi" width="120" height="42">
+      </a>
+      <button class="site-nav__hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+        <span class="site-nav__hamburger-line"></span>
+        <span class="site-nav__hamburger-line"></span>
+        <span class="site-nav__hamburger-line"></span>
+      </button>
+      <ul class="site-nav__links" id="nav-menu">
+        <li><a href="#menu" class="site-nav__link" data-section="menu">Menú</a></li>
+        <li><a href="#quienes-somos" class="site-nav__link" data-section="quienes-somos">Quiénes somos</a></li>
+        <li><a href="#tortas" class="site-nav__link" data-section="tortas">Tortas</a></li>
+        <li><a href="#aprende-cafe" class="site-nav__link" data-section="aprende-cafe">Aprendé café</a></li>
+        <li><a href="#despensa" class="site-nav__link" data-section="despensa">Despensa</a></li>
+        <li><a href="#donde-estamos" class="site-nav__link" data-section="donde-estamos">Encontranos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!--
+    SIRVIENDO AHORA — Cuando rota el café, actualizar EN DOS LUGARES:
+    1) El HTML estático aquí abajo (evita flash al cargar).
+    2) El objeto SERVING_NOW al inicio de js/app.js.
+    Mantenerlos coherentes.
+  -->
+  <aside class="serving-now" aria-label="Cafés que estamos sirviendo ahora">
+    <div class="serving-now__inner">
+      <span class="serving-now__pulse" aria-hidden="true"></span>
+      <div class="serving-now__items">
+        <div class="serving-now__item">
+          <span class="serving-now__label">En espresso</span>
+          <span class="serving-now__sep" aria-hidden="true">·</span>
+          <span class="serving-now__text" data-serving="espresso">Colombia, Caldas, Lavado — Caturra, Castillo, Colombia</span>
+        </div>
+        <div class="serving-now__item">
+          <span class="serving-now__label">En filtrado</span>
+          <span class="serving-now__sep" aria-hidden="true">·</span>
+          <span class="serving-now__text" data-serving="filtrado">El Salvador, Natural anaeróbico — Pacamara</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============================================ -->
+  <!-- 1. HERO                                       -->
+  <!-- ============================================ -->
+  <section class="hero" id="hero">
+    <img src="img/hero.jpg?v=24" alt="" class="hero__bg" fetchpriority="high">
+    <div class="hero__overlay">
+      <div class="hero__content">
+        <img src="img/logo.png" alt="Batata Cofi" class="hero__logo" width="200" height="69">
+        <h1 class="hero__headline" id="hero-headline">El café que te falta conocer</h1>
+
+        <div id="store-status" class="store-status" aria-live="polite">
+          <span class="store-status__dot" aria-hidden="true"></span>
+          <span class="store-status__message">Cargando…</span>
+        </div>
+
+        <!-- RATING: actualizar GOOGLE_RATING y GOOGLE_REVIEW_COUNT en app-v24.js -->
+        <a class="hero__rating" href="https://www.google.com/maps/search/?api=1&query=Batata+Cofi+Florentino+Ameghino+908+Avellaneda" target="_blank" rel="noopener" aria-label="4.8 estrellas en Google con 277 reseñas">
+          <span class="hero__rating-stars" aria-hidden="true">
+            <svg viewBox="0 0 84 16" width="84" height="16" fill="currentColor"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8l5.53-.8L8 0zm17 0l2.47 5 5.53.8-4 3.9.94 5.5L25 12.6 20.06 15.2 21 9.7l-4-3.9 5.53-.8L25 0zm17 0l2.47 5 5.53.8-4 3.9.94 5.5L42 12.6l-4.94 2.6L38 9.7l-4-3.9 5.53-.8L42 0zm17 0l2.47 5 5.53.8-4 3.9.94 5.5L59 12.6l-4.94 2.6L55 9.7l-4-3.9 5.53-.8L59 0zm17 0l2.47 5 5.53.8-4 3.9.94 5.5L76 12.6l-4.94 2.6L72 9.7l-4-3.9 5.53-.8L76 0z"/></svg>
+          </span>
+          <span class="hero__rating-text"><strong>4.8</strong> · 277 reseñas en Google</span>
+        </a>
+
+        <div class="hero__ctas">
+          <a href="#menu" class="btn btn--primary">Ver la carta</a>
+        </div>
+
+        <ul class="hero__secondary">
+          <li>
+            <a href="https://www.google.com/maps/search/?api=1&query=Batata+Cofi+Florentino+Ameghino+908+Avellaneda" target="_blank" rel="noopener" id="cta-llegar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Cómo llegar
+            </a>
+          </li>
+          <li>
+            <a href="https://www.pedidosya.com.ar/restaurantes/avellaneda/batata-cofi-a22a563b-8402-480d-8823-2dfb5d125331-menu" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13l4 5v6h-2"/><path d="M3 7v11h11"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+              Pedido a domicilio
+            </a>
+          </li>
+          <li>
+            <a href="https://www.bigbox.com.ar/regalos/desayunos-almuerzos-tapeos/brunchear/batata-cofi-brunchear/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+              Regalá una experiencia
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <div class="hero__scroll-line"></div>
+        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 1.b. BANDA DE CONFIANZA                       -->
+  <!-- ============================================ -->
+  <aside class="trust-bar" aria-label="Por qué Batata Cofi">
+    <div class="trust-bar__inner">
+      <div class="trust-bar__item">
+        <svg class="trust-bar__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 12h14v8a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6v-8z"/>
+          <path d="M21 14h2a3 3 0 0 1 0 6h-2"/>
+          <path d="M11 4c0 2-2 2-2 4M15 4c0 2-2 2-2 4M19 4c0 2-2 2-2 4"/>
+        </svg>
+        <span class="trust-bar__text">Café de especialidad de origen</span>
+      </div>
+      <div class="trust-bar__item">
+        <svg class="trust-bar__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 18c0-5 5-10 11-10s11 5 11 10"/>
+          <path d="M3 18h26"/>
+          <path d="M5 18l1 6h20l1-6"/>
+          <path d="M16 8V4M13 5l3-2 3 2"/>
+        </svg>
+        <span class="trust-bar__text">Pastelería hecha esta mañana</span>
+      </div>
+      <div class="trust-bar__item">
+        <svg class="trust-bar__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="10" cy="11" r="2"/>
+          <circle cx="22" cy="11" r="2"/>
+          <circle cx="6" cy="17" r="2"/>
+          <circle cx="26" cy="17" r="2"/>
+          <path d="M16 14c-4 0-7 4-7 7 0 2 1 4 3 4h8c2 0 3-2 3-4 0-3-3-7-7-7z"/>
+        </svg>
+        <span class="trust-bar__text">Pet friendly y familiar</span>
+      </div>
+      <div class="trust-bar__item">
+        <svg class="trust-bar__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 28s-9-7-9-15a9 9 0 0 1 18 0c0 8-9 15-9 15z"/>
+          <circle cx="16" cy="13" r="3"/>
+        </svg>
+        <span class="trust-bar__text">Avellaneda, a dos pasos tuyo</span>
+      </div>
+    </div>
+  </aside>
+
+  <section class="banner" id="banner">
+    <div class="banner__inner" id="banner-content"></div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 2. COMBOS DINÁMICOS POR FRANJA                -->
+  <!-- ============================================ -->
+  <section class="combos-feature" id="combos-feature" data-timeslot="">
+    <div class="container">
+      <span class="section-label" data-reveal id="combos-label">Combos</span>
+      <h2 class="combos-feature__title" id="combos-title" data-reveal>Combos batateros</h2>
+      <p class="combos-feature__sub" id="combos-sub" data-reveal>Cargando…</p>
+
+      <div class="combos-feature__cards" role="list" id="combos-cards"></div>
+
+      <div class="combos-feature__rest" id="combos-rest" hidden>
+        <span class="combos-feature__rest-label" id="combos-rest-label">Más opciones</span>
+        <ul class="combos-rest-list" id="combos-rest-list"></ul>
+      </div>
+
+      <div class="combos-feature__footer" id="combos-after-hours-cta" hidden>
+        <a href="#donde-estamos" class="btn btn--primary">Ver nuestros horarios</a>
+      </div>
+
+      <p class="combos-feature__note" id="combos-note">Los combos batateros tienen precio de martes a viernes, de 8:30 a 13:30. Fuera de esa franja, los productos se sirven sueltos: consultá precio en el local o por Instagram.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 3. CARTA                                      -->
+  <!-- ============================================ -->
+  <section class="carta" id="menu">
+    <div class="container">
+      <span class="section-label" data-reveal>Nuestra carta</span>
+      <h1 class="carta__title" data-reveal>Elaborado en casa</h1>
+
+      <nav class="tabs" id="tabs" aria-label="Categorías del menú">
+        <div class="tabs__track" role="tablist">
+          <button class="tab tab--active" data-tab="cafe" type="button" role="tab" aria-selected="true" aria-controls="menu-list">Café</button>
+          <button class="tab" data-tab="especiales" type="button" role="tab" aria-selected="false" aria-controls="menu-list">Especiales</button>
+          <button class="tab" data-tab="desayuno" type="button" role="tab" aria-selected="false" aria-controls="menu-list">Desayuno</button>
+          <button class="tab" data-tab="sandwiches" type="button" role="tab" aria-selected="false" aria-controls="menu-list">Sándwiches</button>
+          <button class="tab" data-tab="tostones" type="button" role="tab" aria-selected="false" aria-controls="menu-list">Tostones</button>
+          <button class="tab" data-tab="bebidas" type="button" role="tab" aria-selected="false" aria-controls="menu-list">Bebidas</button>
+          <button class="tab" data-tab="combos" type="button" role="tab" aria-selected="false" aria-controls="menu-list">Combos</button>
+        </div>
+      </nav>
+
+      <div class="menu-list" id="menu-list" role="tabpanel"></div>
+    </div>
+
+    <!-- 4. PASTELERÍA DEL DÍA (11 fotos) -->
+    <div class="pastry-section">
+      <div class="container">
+        <span class="pastry-section__label" data-reveal>Pastelería del día</span>
+        <p class="pastry-section__text" data-reveal>Fresquito en mostrador, varía según el día.</p>
+        <div class="pastry-grid" id="pastry-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 5. VOUCHER — RESEÑA POR LATTE                 -->
+  <!-- ============================================ -->
+  <!--
+    SETUP DEL VOUCHER (a hacer por Gabriel, una vez):
+    1. Ir a https://formspree.io/ y crear cuenta gratuita (50 submissions/mes).
+    2. Crear un nuevo form, nombrarlo "Vouchers Latte Batata".
+    3. Email de notificación: el de Gabriel/del local.
+    4. Copiar el endpoint del form (formato: https://formspree.io/f/XXXXX).
+    5. Reemplazar abajo: action="https://formspree.io/f/PLACEHOLDER" por el endpoint real.
+    6. Hacer un submit de prueba para validar que llega el email.
+    Mientras tanto: el voucher se genera y guarda en localStorage igual; si Formspree no
+    está configurado, el envío falla silenciosamente y el usuario igual ve su voucher.
+  -->
+  <section class="voucher-cta" id="voucher">
+    <div class="voucher-cta__inner">
+      <span class="section-label" data-reveal>Reseñá y tomate un latte</span>
+      <h2 class="voucher-cta__title" data-reveal>Tu opinión vale un café</h2>
+      <p class="voucher-cta__copy" data-reveal>Dejanos una reseña en Google y te invitamos un latte la próxima vez que vengas. Generá tu voucher y mostralo al barista.</p>
+      <button type="button" class="voucher-cta__button" data-open-voucher data-reveal>
+        Reclamar mi latte gratis
+      </button>
+      <p class="voucher-cta__fineprint" data-reveal>Válido por 4 días desde que lo generás. Un voucher por persona.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 6. QUIENES SOMOS — DOS HERMANOS               -->
+  <!-- ============================================ -->
+  <section class="story" id="quienes-somos">
+    <div class="story__inner">
+      <header class="story__header" data-reveal>
+        <span class="section-label">Quiénes somos</span>
+        <h2 class="story__title">Dos hermanos, una obsesión</h2>
+      </header>
+
+      <div class="story__editorial">
+        <div class="story__text" data-reveal>
+          <p>Empezamos en 2019. Quilli venía de su proyecto de cerámica — Balú Estudio y Mano Cerámica. Lauti hacía control de calidad en una fábrica de perfumes. Un día, Quilli descubrió el café de especialidad y se lo pasó a Lauti, que en poco tiempo se dio cuenta de que había algo en ese mundo que le llamaba la atención.</p>
+          <p>Justo antes de la pandemia, los dos hermanos junto a Ari — pareja de Quilli — decidieron que ya estaban cansados de tener que viajar fuera de Avellaneda para tomar un buen café. Así nació la idea de abrir la primera cafetería de especialidad del barrio.</p>
+          <p>Pandemia por medio, Lauti renunció a su trabajo, tomó un curso de barismo y empezó a trabajar en el rubro. Cinco años después, y con casi dos de insistencia con el local que hoy es Batata, logramos alquilar este espacio — que estaba destruido — para convertirlo en el café acogedor que es hoy.</p>
+          <p>Quilli tomó cursos de pastelería y diseñó las tazas de nuestro café. Ari se puso al hombro la obra. Lauti se desarrolló en el mundo del servicio gastronómico y la educación en café.</p>
+          <p>Juntos creamos el espacio que soñamos. Se llama Batata, en referencia al apellido de Quilli y Lauti. Llevó muchos años, pero hoy vemos con vida el café de nuestros sueños.</p>
+        </div>
+        <figure class="story__hero" data-reveal>
+          <!-- TODO: subir foto hermanos — reemplazar con la imagen de Quilli y Lauti juntos -->
+          <img src="img/lugar-4.jpg" alt="Los hermanos fundadores de Batata Cofi" loading="lazy" width="900" height="1200">
+        </figure>
+      </div>
+
+      <blockquote class="story__closing" data-reveal>
+        <p>Bienvenidos a Batata.</p>
+        <p>Un lugar que esmera en cada detalle para que la experiencia siempre sea la mejor. Lo que más nos gusta no es la primera vez que viene alguien. Es la tercera, la cuarta. Cuando alguien vuelve un martes y un jueves de la misma semana, sabemos que algo está bien hecho.</p>
+      </blockquote>
+
+      <blockquote class="story__quote" data-reveal>
+        <p>No abrimos un local. Abrimos el lugar que nos hubiera gustado tener cerca.</p>
+      </blockquote>
+
+      <div class="story__grid">
+        <img src="img/lugar-1.jpg" alt="El interior del local de Batata Cofi" loading="lazy" width="600" height="600" data-reveal data-stagger="0">
+        <img src="img/lugar-2.jpg" alt="Cappu con latte art y medialuna en mesa de madera" loading="lazy" width="600" height="600" data-reveal data-stagger="1">
+        <img src="img/lugar-3.jpg" alt="Perrita mirando por la ventana del café" loading="lazy" width="600" height="600" data-reveal data-stagger="2">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 7. TORTAS ENTERAS                              -->
+  <!-- ============================================ -->
+  <section class="tortas" id="tortas">
+    <div class="container">
+      <span class="section-label" data-reveal>Tortas enteras</span>
+      <h2 class="tortas__title" data-reveal>Para llevar o por encargo</h2>
+      <p class="tortas__text" data-reveal>Las hacemos nosotros, con los mismos ingredientes del café. Consultá disponibilidad con 72hs de anticipación.</p>
+      <div class="tortas__grid" id="tortas-grid"></div>
+      <div class="tortas__cta-wrap" data-reveal>
+        <a href="https://wa.me/5491134316255?text=Hola%20Batata!%20Quiero%20consultar%20por%20una%20torta%20entera." class="btn btn--whatsapp" target="_blank" rel="noopener">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Consultar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 8. APRENDÉ CAFÉ — NEWSLETTER + VIDEO BG       -->
+  <!-- ============================================ -->
+  <!--
+    SETUP DEL NEWSLETTER (a hacer por Gabriel, una vez):
+    1. Ir a https://www.brevo.com/ y crear cuenta gratuita.
+    2. Marketing → Forms → Create sign-up form.
+    3. Tipo: "Full page / embedded".
+    4. Nombre interno: "Newsletter Batata Cofi".
+    5. Campos: solo email + nombre opcional.
+    6. Habilitar GDPR opt-in.
+    7. En "Share", copiar el código IFRAME.
+    8. Reemplazar el form fallback de abajo por:
+       <div class="newsletter-brevo">
+         <iframe class="newsletter-brevo__iframe" src="[URL_BREVO]" frameborder="0" scrolling="auto" allowfullscreen></iframe>
+       </div>
+
+    SETUP DEL VIDEO DE FONDO:
+    1. Subir el archivo de Gabriel a img/batata-escuela.mp4 (o el nombre que use).
+    2. Descomentar la línea <source ...> abajo y ajustar el src si hace falta.
+    3. Opcional: poster image en img/education-poster.jpg (un frame estático).
+    Mientras tanto: el fondo burgundy + overlay garantiza legibilidad sin video.
+  -->
+  <section class="education" id="aprende-cafe">
+    <div class="education__video-bg" aria-hidden="true">
+      <video class="education__video"
+             autoplay loop muted playsinline preload="none"
+             poster="img/education-poster.jpg?v=25">
+        <source src="img/batata-escuela.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="education__overlay" aria-hidden="true"></div>
+
+    <div class="education__inner">
+      <span class="section-label" data-reveal>Aprendé café</span>
+      <h2 class="education__title" data-reveal>Cursos, filtrados y catas abiertas</h2>
+      <p class="education__copy" data-reveal>Todos los meses abrimos un par de catas para que vengas, pruebes café distinto y charlemos un rato. También damos cursos de barismo y de métodos de filtrado, en grupos chicos.</p>
+
+      <div class="education__upcoming" data-reveal>
+        <span class="education__upcoming-label">Próximo taller</span>
+        <div class="education__dates">
+          <div class="education__date-card">
+            <strong>Taller de barista inicial</strong>
+            <span>Clase 1 — 22 de junio, 18:00 hs</span>
+            <span>Clase 2 — 29 de junio, 18:00 hs</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="newsletter-form" id="newsletter-fallback" action="mailto:hola@batatacofi.com" method="post" enctype="text/plain" data-reveal>
+        <label for="newsletter-email" class="newsletter-form__label">Tu mail</label>
+        <input type="email" id="newsletter-email" name="email" placeholder="vos@tuemail.com" required class="newsletter-form__input" autocomplete="email">
+        <button type="submit" class="newsletter-form__submit">Quiero saber</button>
+        <p class="newsletter-form__urgency" id="cursos-urgency" hidden>
+          <span class="newsletter-form__urgency-dot" aria-hidden="true"></span>
+          Quedan <strong id="cursos-spots">—</strong> lugares
+        </p>
+        <p class="newsletter-form__hint">Mandamos info de catas y cursos. Sin spam, palabra de barista.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 9. DESPENSA                                   -->
+  <!-- ============================================ -->
+  <!-- TODO: reemplazar imágenes de img/pantry/ con fotos reales de cada producto -->
+  <section class="pantry" id="despensa">
+    <div class="pantry__inner">
+      <header class="pantry__header">
+        <span class="section-label" data-reveal>Despensa Batata</span>
+        <h2 class="pantry__title" data-reveal>También llevátelo a casa</h2>
+        <p class="pantry__intro" data-reveal>Seleccionamos los mejores productos de producción local — como la miel y el aceite de oliva que usamos en Batata — junto con los mejores granos de los mejores tostadores de Buenos Aires. También elaboramos productos en casa. Todo disponible para vos.</p>
+      </header>
+      <div class="pantry__grid" id="pantry-grid"></div>
+      <div class="pantry__cta-wrap" data-reveal>
+        <p class="pantry__cta">¿Querés ver qué hay disponible esta semana?</p>
+        <a href="https://wa.me/5491134316255?text=Hola%20Batata!%20Quiero%20consultar%20por%20productos%20de%20la%20despensa." class="btn btn--whatsapp" target="_blank" rel="noopener">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escribinos por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 10. INSTAGRAM FEED                            -->
+  <!-- ============================================ -->
+  <section class="instagram-feed" id="instagram-feed">
+    <div class="instagram-feed__inner">
+      <span class="section-label" data-reveal>Lo último en Instagram</span>
+      <h2 class="instagram-feed__title" data-reveal>@batata.cofi</h2>
+      <p class="instagram-feed__subtitle" data-reveal>Lo más nuevo del mostrador, el café del día y los detalles del local.</p>
+      <div class="instagram-feed__grid" id="instagram-feed-grid" data-reveal></div>
+      <a href="https://www.instagram.com/batata.cofi/" target="_blank" rel="noopener" class="instagram-feed__cta" data-reveal>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+        </svg>
+        Seguinos en Instagram
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 11. TESTIMONIOS                               -->
+  <!-- ============================================ -->
+  <!-- TODO: Gabriel — reemplazar los testimonios placeholder en app-v24.js con las 3 mejores reseñas reales de Google Maps -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials__inner">
+      <span class="section-label" data-reveal>Lo que dicen</span>
+      <h2 class="testimonials__title" data-reveal>La gente vuelve</h2>
+      <div class="testimonials__grid" id="testimonials-grid"></div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Batata+Cofi+Florentino+Ameghino+908+Avellaneda" target="_blank" rel="noopener" class="testimonials__more-link" data-reveal>
+        Ver más reseñas en Google →
+      </a>
+      <a href="#voucher" class="testimonials__voucher-link" data-reveal>
+        Dejá tu reseña y tomate un latte gratis →
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 12. PARTNERS — TAMBIÉN ENCONTRANOS EN         -->
+  <!-- ============================================ -->
+  <section class="partners" id="encontranos-en">
+    <div class="partners__inner">
+      <span class="section-label" data-reveal>También encontranos en</span>
+      <div class="partners__grid">
+        <a href="https://www.pedidosya.com.ar/restaurantes/avellaneda/batata-cofi-a22a563b-8402-480d-8823-2dfb5d125331-menu"
+           class="partner-card"
+           target="_blank"
+           rel="noopener"
+           aria-label="Pedí desde tu casa por PedidosYa"
+           data-reveal data-stagger="0">
+          <span class="partner-card__caption">Pedilo desde tu casa</span>
+          <img class="partner-card__logo" src="img/brands/pedidosya.svg" alt="PedidosYa" width="140" height="30">
+          <span class="partner-card__cta">Pedir ahora →</span>
+        </a>
+        <a href="https://www.bigbox.com.ar/regalos/desayunos-almuerzos-tapeos/brunchear/batata-cofi-brunchear/"
+           class="partner-card"
+           target="_blank"
+           rel="noopener"
+           aria-label="Regalá una experiencia Batata Cofi por Bigbox"
+           data-reveal data-stagger="1">
+          <span class="partner-card__caption">Regalá una experiencia Batata</span>
+          <img class="partner-card__logo" src="img/brands/bigbox.svg" alt="Bigbox" width="140" height="30">
+          <span class="partner-card__cta">Comprar regalo →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 13. ENCONTRANOS                               -->
+  <!-- ============================================ -->
+  <section class="find-us" id="donde-estamos">
+    <img class="sticker sticker--1" src="img/logo.png" alt="" aria-hidden="true" loading="lazy" width="120" height="42">
+    <img class="sticker sticker--2" src="img/logo.png" alt="" aria-hidden="true" loading="lazy" width="120" height="42">
+    <img class="sticker sticker--3" src="img/logo.png" alt="" aria-hidden="true" loading="lazy" width="120" height="42">
+    <img class="sticker sticker--4" src="img/logo.png" alt="" aria-hidden="true" loading="lazy" width="120" height="42">
+    <img class="sticker sticker--5" src="img/logo.png" alt="" aria-hidden="true" loading="lazy" width="120" height="42">
+
+    <div class="find-us__inner">
+      <header class="find-us__header">
+        <span class="section-label" data-reveal>Encontranos</span>
+        <h2 class="find-us__title" data-reveal>Un cafecito y arranco, pasate</h2>
+        <p class="find-us__subtitle" data-reveal><em>mataría por un cofi</em></p>
+      </header>
+
+      <div class="find-us__grid">
+        <div class="find-us__info">
+          <div class="info-block" data-reveal data-stagger="0">
+            <span class="info-block__label">Dónde estamos</span>
+            <p class="info-block__value">Florentino Ameghino 908, Avellaneda</p>
+            <a class="info-block__link"
+               href="https://www.google.com/maps/search/?api=1&query=Batata+Cofi+Florentino+Ameghino+908+Avellaneda"
+               target="_blank" rel="noopener">Cómo llegar →</a>
+          </div>
+          <div class="info-block" data-reveal data-stagger="1">
+            <span class="info-block__label">Horarios <span class="status-dot" id="status-dot" aria-hidden="true"></span></span>
+            <ul class="info-block__list">
+              <li>Martes a viernes: 8:30 a 19:30</li>
+              <li>Sábados: 10 a 14 y 16 a 19:30</li>
+              <li>Domingos: 16 a 19:30</li>
+              <li>Lunes: cerrado</li>
+            </ul>
+          </div>
+          <div class="info-block" data-reveal data-stagger="2">
+            <span class="info-block__label">Seguinos</span>
+            <a class="info-block__instagram"
+               href="https://www.instagram.com/batata.cofi/"
+               target="_blank" rel="noopener">@batata.cofi</a>
+          </div>
+        </div>
+
+        <div class="find-us__map-wrap" data-reveal>
+          <iframe
+            class="find-us__map"
+            src="https://maps.google.com/maps?q=Batata+Cofi+Florentino+Ameghino+908+Avellaneda&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="100%"
+            style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación de Batata Cofi en Google Maps"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 13. FOOTER                                    -->
+  <!-- ============================================ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <img src="img/logo.png" alt="Batata Cofi" class="footer__logo" loading="lazy" width="100" height="35">
+      <div class="footer__info">
+        <p class="footer__name">Batata Cofi</p>
+        <p class="footer__location">Avellaneda, Buenos Aires</p>
+      </div>
+      <a href="https://www.instagram.com/batata.cofi/" target="_blank" rel="noopener" class="footer__ig">@batata.cofi</a>
+
+      <div class="footer__newsletter">
+        <p class="footer__newsletter-title">Comunidad Batata</p>
+        <p class="footer__newsletter-text">Antes que nadie te contamos novedades, descuentos y fechas de catas.</p>
+        <form class="footer__newsletter-form" onsubmit="return false;">
+          <input type="email" placeholder="vos@tuemail.com" class="footer__newsletter-input" disabled>
+          <button type="submit" class="footer__newsletter-btn" disabled>Anotarme</button>
+        </form>
+        <p class="footer__newsletter-soon">Próximamente disponible</p>
+      </div>
+
+      <p class="footer__copy">&copy; 2026 Batata Cofi</p>
+    </div>
+  </footer>
+
+  <!-- ============================================ -->
+  <!-- PRODUCT MODAL (combos + menú clickeables + pastelería) -->
+  <!-- ============================================ -->
+  <div id="combo-modal" class="combo-modal" hidden role="dialog" aria-modal="true" aria-labelledby="combo-modal-title">
+    <button class="combo-modal__close" aria-label="Cerrar" type="button">×</button>
+    <div class="combo-modal__content">
+      <img class="combo-modal__image" src="" alt="">
+      <h3 id="combo-modal-title" class="combo-modal__name"></h3>
+      <p class="combo-modal__price"></p>
+      <a class="combo-modal__encargar" id="combo-modal-encargar" href="#" hidden>Encargar</a>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- VOUCHER MODAL                                 -->
+  <!-- ============================================ -->
+  <!--
+    SETUP DEL PLACE ID DE GOOGLE: ya configurado (ChIJ84JLiykzo5UR4-WIti1vO3I).
+    El link manda al usuario al formulario oficial para escribir reseña en Google.
+  -->
+  <div class="voucher-modal" id="voucher-modal" hidden role="dialog" aria-modal="true" aria-labelledby="voucher-modal-title">
+    <button class="voucher-modal__close" aria-label="Cerrar" type="button">×</button>
+    <div class="voucher-modal__content">
+
+      <div class="voucher-form-view" data-voucher-view="form">
+        <h3 id="voucher-modal-title" class="voucher-modal__title">Reclamá tu latte</h3>
+        <p class="voucher-modal__subtitle">
+          Dejanos una <a href="https://search.google.com/local/writereview?placeid=ChIJ84JLiykzo5UR4-WIti1vO3I" target="_blank" rel="noopener" class="voucher-modal__google-link">reseña en Google</a> y completá esto:
+        </p>
+        <form class="voucher-form" id="voucher-form" action="https://formspree.io/f/PLACEHOLDER" method="POST">
+          <label class="voucher-form__field">
+            <span>Nombre</span>
+            <input type="text" name="nombre" required placeholder="Como te llamás" autocomplete="name">
+          </label>
+          <label class="voucher-form__field">
+            <span>Email</span>
+            <input type="email" name="email" required placeholder="vos@tuemail.com" autocomplete="email">
+          </label>
+          <label class="voucher-form__field">
+            <span>Link a tu reseña (opcional)</span>
+            <input type="url" name="resena_url" placeholder="https://...">
+            <small>Si querés, pegá el link de tu reseña en Google. Si no, no pasa nada.</small>
+          </label>
+          <input type="hidden" name="voucher_code" id="voucher-code-field">
+          <input type="hidden" name="voucher_expires" id="voucher-expires-field">
+          <input type="hidden" name="_subject" value="Nuevo voucher de latte gratis — Batata Cofi">
+          <button type="submit" class="voucher-form__submit">Generar mi voucher</button>
+        </form>
+      </div>
+
+      <div class="voucher-result" data-voucher-view="result" hidden>
+        <div class="voucher-ticket">
+          <div class="voucher-ticket__top">
+            <span class="voucher-ticket__brand">Batata Cofi</span>
+            <span class="voucher-ticket__type">Latte gratis</span>
+          </div>
+          <div class="voucher-ticket__perforation" aria-hidden="true"></div>
+          <div class="voucher-ticket__body">
+            <span class="voucher-ticket__label">Tu código</span>
+            <strong class="voucher-ticket__code" id="voucher-code-display">—</strong>
+            <span class="voucher-ticket__label">Vence</span>
+            <span class="voucher-ticket__expiry" id="voucher-expiry-display">—</span>
+          </div>
+        </div>
+        <p class="voucher-result__instructions">
+          Mostrale esta pantalla al barista cuando vengas.<br>
+          Tenés <strong>4 días</strong> para usarlo.
+        </p>
+        <p class="voucher-result__note">
+          Te enviamos también una copia a tu mail. Lo guardamos en este dispositivo, podés volver a verlo abriendo este sitio.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <a class="mobile-cta-bar" href="https://www.pedidosya.com.ar/restaurantes/avellaneda/batata-cofi-a22a563b-8402-480d-8823-2dfb5d125331-menu" target="_blank" rel="noopener" aria-label="Pedir ahora por PedidosYa">
+    <span class="mobile-cta-bar__label">
+      <svg class="mobile-cta-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 7h13l4 5v6h-2"/>
+        <path d="M3 7v11h11"/>
+        <circle cx="7" cy="18" r="2"/>
+        <circle cx="17" cy="18" r="2"/>
+      </svg>
+      Pedir ahora
+    </span>
+    <span class="mobile-cta-bar__arrow" aria-hidden="true">→</span>
+  </a>
+
+  <script src="js/app-v25.js?v=25b"></script>
+</body>
+</html>
