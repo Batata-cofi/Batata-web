@@ -1,19 +1,8 @@
 (function () {
   'use strict';
 
-  // ==========================================================
-  // SIRVIENDO AHORA — Editar este objeto cuando rota el café.
-  // La barra superior se actualiza automáticamente al recargar.
-  // El HTML estático tiene los mismos valores; mantenerlos coherentes.
-  // ==========================================================
-
-  // ========================================
-  // RATING DE GOOGLE — ACTUALIZAR MANUALMENTE
-  // Ir a Google Maps > Batata Cofi > copiar rating y cantidad de reseñas
-  // Última actualización: 2026-05-08
-  // ========================================
   var GOOGLE_RATING = 4.8;
-  var GOOGLE_REVIEW_COUNT = 277;
+  var GOOGLE_REVIEW_COUNT = 285;
 
   var SERVING_NOW = {
     espresso: {
@@ -30,12 +19,6 @@
     }
   };
 
-  // ==========================================================
-  // PANTRY — Productos de la despensa.
-  // Editar este array cuando cambia disponibilidad o se agrega.
-  // available: false → sale con badge "Próximamente" y opacidad reducida.
-  // ==========================================================
-
   var PANTRY = [
     { name: 'Café en granos',  desc: 'El mismo que tomás acá. Tostado de la semana.',  image: 'img/pantry/cafe.jpg?v=25b',      available: true  },
     { name: 'Miel orgánica',   desc: 'De productores familiares. Pura, sin filtrar.',  image: 'img/pantry/miel.jpg?v=25b',      available: true  },
@@ -43,11 +26,6 @@
     { name: 'Mermelada casera',desc: 'Hecha en casa con frutas de estación.',          image: 'img/logo.png', available: false, placeholder: true },
     { name: 'Granola',         desc: 'La que servimos en el yogurt. Hecha por nosotros.', image: 'img/logo.png', available: false, placeholder: true }
   ];
-
-  // ==========================================================
-  // TESTIMONIALS — Reseñas reales o placeholder.
-  // Reemplazar con reseñas reales de Google cuando estén.
-  // ==========================================================
 
   var TESTIMONIALS = [
     {
@@ -67,11 +45,6 @@
     }
   ];
 
-  // ==========================================================
-  // INSTAGRAM FEED — Editar este array para actualizar las fotos.
-  // Subir cada foto a img/instagram/ y poner el path acá.
-  // ==========================================================
-
   var INSTAGRAM_FEED = [
     { image: 'img/instagram/ig-1.jpg',  alt: 'Cuadro y plantas en el interior del local'   },
     { image: 'img/instagram/ig-2.jpg',  alt: 'Cata de café con grupo de personas'          },
@@ -84,7 +57,6 @@
     { image: 'img/instagram/ig-10.jpg', alt: 'Máquina de espresso con stickers'            }
   ];
 
-  // ==========================================================
   var PRODUCT_IMAGES = {
     // Café
     'Espresso':                        'img/menu/espresso.jpg',
@@ -103,11 +75,11 @@
     'Pancakes':                        'img/productos/pancakes.jpg',
     // Sándwiches
     'Sandwich bondio':                 'img/productos/sandwich-bondio.jpg',
+    'Sandwich de hongos':              'img/productos/sandwich-hongos.jpg',
     'Tostado':                         'img/productos/tostado-lomito-queso.jpg',
     'Chipa prensado':                  'img/productos/chipa-prensado.jpg',
     // Tostones
     'Tostón de palta':                 'img/productos/toston-de-palta.jpg',
-    'Tostón de berenjena':             'img/productos/toston-de-berenjenas.jpg',
     'Tostón de perso':                 'img/productos/toston-de-perso.jpg',
   };
 
@@ -145,11 +117,6 @@
       })
       .catch(function () {});
   }
-
-  // ==========================================================
-  // PASTELERÍA — Lista completa de productos a mostrar en la grid.
-  // El orden acá es el que sale en pantalla.
-  // ==========================================================
 
   var PASTRY_DESCRIPTIONS = {
     'Alfa nevado':          'Alfajor mar del plata, tapas de limón, relleno de dulce de leche, corazón de pasta de dátiles y cacao, cobertura de merengue y azúcar impalpable.',
@@ -192,13 +159,6 @@
     { image: 'img/tortas/torta-arandanos-limon.jpg', caption: 'Torta arándanos y limón' }
   ];
 
-  // ==========================================================
-  // COMBOS POR FRANJA — v23
-  // Cambia título, copy, cards y lista según la hora del usuario.
-  // Usa imágenes EXISTENTES: ver mapping abajo.
-  // Productos sin precio fijo → se muestran con CTA "Consultar".
-  // ==========================================================
-
   var INSTAGRAM_URL = 'https://www.instagram.com/batata.cofi/';
 
   var COMBOS_BY_TIMESLOT = {
@@ -240,27 +200,27 @@
       cards: [
         {
           name: 'Sandwich bondio',
-          desc: 'Brioche, ranch, bondiola, rúcula, danbo, pera + chips',
-          price: '$19.000',
-          image: 'img/menu/sandwich-bondio.jpg'
+          desc: 'Brioche, bondiola desmechada, pepinillos, lechuga, honey mustard + chips',
+          price: '$16.000',
+          image: 'img/productos/sandwich-bondio.jpg'
         },
         {
           name: 'Sandwich mortadela',
           desc: 'Masa madre, pesto, mortadela de pistachos, danbo + chips',
-          price: '$16.500',
+          price: '$12.500',
           image: 'img/menu/sandwich-mortadela.jpg'
         },
         {
-          name: 'Sandwich veggie',
-          desc: 'Brioche, muhammara, zucchini, rúcula, reggianito + chips',
-          price: '$16.500',
-          image: 'img/menu/sandwich-veggie-de-verano.jpg'
+          name: 'Sandwich de hongos',
+          desc: 'Masa madre, champiñones grillados, cebolla caramelizada, danbo, espinaca + chips',
+          price: '$16.000',
+          image: 'img/productos/sandwich-hongos.jpg'
         }
       ],
       restLabel: 'También a esta hora',
       rest: [
-        { name: 'Tostón de palta', price: '$7.000', desc: 'Masa madre, queso crema, palta, tomate cherry, oliva y semillas de sésamo', tag: 'Vegetariano' },
-        { name: 'Tostón de perso', price: '$9.200', desc: 'Masa madre, queso crema, tomates contados, granola y oliva', tag: 'Vegetariano' }
+        { name: 'Tostón de palta', price: '$11.000', desc: 'Masa madre, queso crema, palta, tomate cherry, oliva y semillas de sésamo', tag: 'Vegetariano' },
+        { name: 'Tostón de perso', price: '$9.000', desc: 'Masa madre, queso crema, tomates contados, granola y oliva', tag: 'Vegetariano' }
       ]
     },
 
@@ -312,8 +272,8 @@
         {
           name: 'Sandwich bondio',
           desc: 'Combo de almuerzo con limonada + espresso',
-          price: '$19.000',
-          image: 'img/menu/sandwich-bondio.jpg'
+          price: '$16.000',
+          image: 'img/productos/sandwich-bondio.jpg'
         },
         {
           name: 'Filtrado del día',
@@ -329,10 +289,7 @@
     }
   };
 
-  // ==========================================================
-  // Menu data — Carta Abril 2026
-  // ==========================================================
-
+  // Menu data — Carta Junio 2026
   var MENU = {
     cafe: [
       { name: 'Espresso', desc: 'Solo o doble', price: 3800 },
@@ -348,8 +305,8 @@
         { label: 'Cappu', image: 'img/menu/cappu.jpg' },
         { label: 'Cappu doble', image: 'img/menu/cappu-doble.jpg' }
       ]},
-      { name: 'Cappu doble', desc: 'Cappuccino doble', price: 6000 },
-      { name: 'Flat white', desc: 'Doble ristretto con leche emulsionada', price: 5800 },
+      { name: 'Cappu doble', desc: 'Cappuccino doble', price: 6200 },
+      { name: 'Flat white', desc: 'Doble ristretto con leche emulsionada', price: 6000 },
       { name: 'Latte', desc: 'Café con leche suave', price: 5600 },
       { name: 'Té', desc: 'Consultar variedad', price: 5000 }
     ],
@@ -368,20 +325,18 @@
       { name: 'Pancakes', desc: 'Dos pancakes de almendras con pasta de maní, miel, frutillas, banana y granola', price: 11000, tag: 'Sin gluten' }
     ],
     sandwiches: [
-      { name: 'Sandwich bondio', desc: 'Pan brioche, salsa ranch, ambre de bondiola, rúcula, queso danbo y pera. Con chips de batatas', price: 14000 },
+      { name: 'Sandwich bondio', desc: 'Pan brioche, bondiola desmechada, pepinillos, lechuga, honey mustard. Con chips de batatas', price: 16000 },
       { name: 'Sandwich mortadela', desc: 'Pan de masa madre con pesto, mortadela de pistachos, queso danbo y tomates contados. Con chips de batatas', price: 12500 },
-      { name: 'Sandwich veggie de verano', desc: 'Pan brioche, salsa de morrones asados, zucchini asado, rúcula, queso reggianito rallado. Con chips de batatas', price: 11500, tag: 'Vegetariano' },
+      { name: 'Sandwich de hongos', desc: 'Pan de masa madre, queso danbo, champiñones grillados, cebolla caramelizada, espinaca. Con chips de batatas', price: 16000, tag: 'Vegetariano' },
       { name: 'Tostado', desc: 'Pan blanco de molde, lomito y queso o capresse', price: 8500, tag: 'Vegetariano' },
       { name: 'Medialuna rellena', desc: 'Rellena de queso danbo y lomito o capresse. Sale calentita', price: 9500, tag: 'Vegetariano' },
       { name: 'Chipa prensado', desc: 'Nuestro chipa relleno de lomito y queso o capresse. Sale tostado y calentito', price: 8000, tag: 'Sin gluten' }
     ],
     tostones: [
-      { name: 'Tostón de palta', desc: 'Masa madre, queso crema, palta, tomate cherry, oliva y semillas de sésamo', price: 10000, tag: 'Vegetariano' },
-      { name: 'Tostón de berenjena', desc: 'Masa madre, yogur natural, berenjenas en escabeche, tomates cherry contados, granola y miel', price: 7500, tag: 'Vegetariano' },
-      { name: 'Tostón de perso', desc: 'Masa madre, queso crema, tomates contados, granola y oliva', price: 7000, tag: 'Vegetariano' }
+      { name: 'Tostón de palta', desc: 'Masa madre, queso crema, palta, tomate cherry, oliva y semillas de sésamo', price: 11000, tag: 'Vegetariano' },
+      { name: 'Tostón de perso', desc: 'Masa madre, queso crema, tomates contados, granola y oliva', price: 9000, tag: 'Vegetariano' }
     ],
     bebidas: [
-      { name: 'Pomelada', desc: 'Jugo de pomelo, miel, jengibre, pimienta rosa y almíbar de manzanilla', price: 5000 },
       { name: 'Mandarinada', desc: 'Jugo de mandarina, limón, cardamomo y almíbar de banana', price: 5000 },
       { name: 'Exprimido de naranja', desc: 'Fresco y natural', price: 4500 }
     ],
@@ -395,18 +350,13 @@
         { name: 'Latte + alfajor de almendras', desc: 'Café con leche 1 shot o americano + alfajor de almendras', price: 8000 }
       ],
       almuerzo: [
-        { name: 'Sandwich bondio + limonada + espresso largo o cortado', desc: 'Combo almuerzo completo', price: 19000 },
-        { name: 'Sandwich mortadela + limonada + espresso largo o cortado', desc: 'Combo almuerzo completo', price: 16500 },
-        { name: 'Sandwich veggie + limonada + espresso largo o cortado', desc: 'Combo almuerzo completo', price: 16500 }
+        { name: 'Sandwich bondio + limonada + espresso largo o cortado', desc: 'Combo almuerzo completo', price: 16000 },
+        { name: 'Sandwich mortadela + limonada + espresso largo o cortado', desc: 'Combo almuerzo completo', price: 12500 },
+        { name: 'Sandwich de hongos + limonada + espresso largo o cortado', desc: 'Combo almuerzo completo', price: 16000 }
       ]
     }
   };
 
-  // ==========================================================
-  // Schedule (single source of truth)
-  // ==========================================================
-
-  // 510 = 8:30 (8*60+30); 1170 = 19:30; 600 = 10:00; 840 = 14:00; 960 = 16:00.
   var SCHEDULE = {
     monday:    [],
     tuesday:   [{open: 510, close: 1170}],
@@ -424,10 +374,6 @@
     wednesday: 'el miércoles', thursday: 'el jueves', friday: 'el viernes',
     saturday: 'el sábado'
   };
-
-  // ==========================================================
-  // Helpers
-  // ==========================================================
 
   function formatPrice(n) {
     var s = String(n);
@@ -486,10 +432,6 @@
       .replace(/'/g, '&#39;');
   }
 
-  // ==========================================================
-  // Store status
-  // ==========================================================
-
   function getStoreStatus() {
     var t = getBuenosAiresTime();
     var slots = SCHEDULE[t.weekday] || [];
@@ -542,10 +484,6 @@
     }
   }
 
-  // ==========================================================
-  // Hero message + Banner
-  // ==========================================================
-
   function heroMessage(t) {
     var wd = t.weekday, m = t.timeInMinutes;
     if (wd === 'monday') return 'Hoy descansamos';
@@ -570,11 +508,9 @@
     return '';
   }
 
-  // Hero headline (v23) — emotional copy by timeslot. Replaces heroMessage in init().
   function heroHeadline(t) {
     var wd = t.weekday, m = t.timeInMinutes;
 
-    // Lunes y fuera de horario operativo: mensaje neutro
     if (wd === 'monday') return 'Hoy descansamos. Volvé mañana.';
 
     var slots = SCHEDULE[wd] || [];
@@ -584,10 +520,9 @@
     }
     if (!open) return 'Ahora estamos cerrados';
 
-    // Franjas v23 (Mar-Vie y proporcionales a Sáb/Dom)
-    if (m < 690) return 'El café que te falta conocer';   // hasta 11:30 → mañana
-    if (m < 900) return 'Una pausa que sabe a algo hecho de verdad.';            // hasta 15:00 → mediodía
-    return 'El turno tarde es para los que saben vivir.';                         // tarde
+    if (m < 690) return 'El café que te falta conocer';
+    if (m < 900) return 'Una pausa que sabe a algo hecho de verdad.';
+    return 'El turno tarde es para los que saben vivir.';
   }
 
   function bannerContent(t) {
@@ -616,7 +551,7 @@
           items: [
             { name: 'Latte + cookie', price: 8000 },
             { name: 'Latte + tostadas', price: 9900 },
-            { name: 'Sandwich bondio combo', price: 19000 }
+            { name: 'Sandwich bondio combo', price: 16000 }
           ]
         };
       }
@@ -652,10 +587,6 @@
     return { title: '', sub: '' };
   }
 
-  // ==========================================================
-  // COMBOS POR FRANJA (v23)
-  // ==========================================================
-
   function getTimeslot(t) {
     if (t.weekday === 'monday') return 'after-hours';
     var slots = SCHEDULE[t.weekday] || [];
@@ -664,9 +595,9 @@
       if (t.timeInMinutes >= slots[i].open && t.timeInMinutes < slots[i].close) { open = true; break; }
     }
     if (!open) return 'after-hours';
-    if (t.timeInMinutes < 690) return 'manana';      // < 11:30
-    if (t.timeInMinutes < 900) return 'mediodia';    // 11:30 - 15:00
-    return 'tarde';                                   // 15:00 +
+    if (t.timeInMinutes < 690) return 'manana';
+    if (t.timeInMinutes < 900) return 'mediodia';
+    return 'tarde';
   }
 
   function renderCombosByTimeslot(t) {
@@ -691,7 +622,6 @@
     if (titleEl) titleEl.textContent = data.title;
     if (subEl)   subEl.textContent   = data.sub;
 
-    // Cards
     var cardsHtml = '';
     for (var i = 0; i < data.cards.length; i++) {
       var c = data.cards[i];
@@ -703,8 +633,6 @@
         ? '<a class="combo-card__hint combo-card__hint--ig" href="' + INSTAGRAM_URL + '" target="_blank" rel="noopener">Consultar por Instagram</a>'
         : '<span class="combo-card__hint">Ver el producto</span>';
 
-      // Si es consultar, el card NO abre el modal de productos; linkea a Instagram desde el hint.
-      // Si no, mantiene comportamiento de modal usando data-combo-* (compat con initComboModal).
       var dataAttrs = c.consultar
         ? ''
         : ' data-combo-image="' + escapeHtml(c.image) + '"' +
@@ -727,7 +655,6 @@
     }
     cardsEl.innerHTML = cardsHtml;
 
-    // Rest list
     if (data.rest && data.rest.length) {
       restWrap.hidden = false;
       if (restLabel) restLabel.textContent = data.restLabel || 'Más opciones';
@@ -748,7 +675,6 @@
       restWrap.hidden = true;
     }
 
-    // After-hours CTA
     if (afterCta) afterCta.hidden = !data.showHoursCta;
   }
 
@@ -758,10 +684,6 @@
     if (WEEKDAYS_TUVW.indexOf(wd) !== -1) return m < 810 ? 'combos' : 'especiales';
     return 'especiales';
   }
-
-  // ==========================================================
-  // Rendering
-  // ==========================================================
 
   function renderBanner(data) {
     var el = document.getElementById('banner-content');
@@ -841,10 +763,6 @@
     return html;
   }
 
-  // ==========================================================
-  // v6 — Pastelería render
-  // ==========================================================
-
   function renderPastry() {
     var grid = document.getElementById('pastry-grid');
     if (!grid) return;
@@ -902,14 +820,6 @@
       list.classList.remove('fading');
     }, 150);
   }
-
-  // ==========================================================
-  // Combo modal
-  // ==========================================================
-
-  // ==========================================================
-  // Product modal — combos destacados, ítems del menú con foto y pastelería.
-  // ==========================================================
 
   function initComboModal() {
     var modal = document.getElementById('combo-modal');
@@ -1078,10 +988,6 @@
     });
   }
 
-  // ==========================================================
-  // Hero parallax + scroll fade
-  // ==========================================================
-
   function initParallax() {
     var bg = document.querySelector('.hero__bg');
     var scroll = document.querySelector('.hero__scroll');
@@ -1108,10 +1014,6 @@
     }, { passive: true });
   }
 
-  // ==========================================================
-  // Smooth scroll
-  // ==========================================================
-
   function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
       link.addEventListener('click', function (e) {
@@ -1126,10 +1028,6 @@
     });
   }
 
-  // ==========================================================
-  // Tabs
-  // ==========================================================
-
   function initTabs() {
     document.querySelectorAll('.tab').forEach(function (tab) {
       tab.addEventListener('click', function () {
@@ -1139,20 +1037,12 @@
     });
   }
 
-  // ==========================================================
-  // QR mode
-  // ==========================================================
-
   function handleQR() {
     if (window.location.search.indexOf('qr') !== -1 || window.location.hash.indexOf('qr') !== -1) {
       var el = document.getElementById('cta-llegar');
       if (el && el.parentNode) el.parentNode.removeChild(el);
     }
   }
-
-  // ==========================================================
-  // Scroll reveal (IntersectionObserver)
-  // ==========================================================
 
   function initScrollReveal() {
     var els = document.querySelectorAll('[data-reveal]');
@@ -1177,10 +1067,6 @@
     els.forEach(function (el) { observer.observe(el); });
   }
 
-  // ==========================================================
-  // v5 — Serving now
-  // ==========================================================
-
   function renderServingNow() {
     var espressoEl = document.querySelector('[data-serving="espresso"]');
     var filtradoEl = document.querySelector('[data-serving="filtrado"]');
@@ -1193,10 +1079,6 @@
       filtradoEl.textContent = f.origin + ', ' + f.process + ' — ' + f.variety;
     }
   }
-
-  // ==========================================================
-  // v5 — Pantry
-  // ==========================================================
 
   function renderPantry() {
     var grid = document.getElementById('pantry-grid');
@@ -1245,10 +1127,6 @@
     grid.innerHTML = html;
   }
 
-  // ==========================================================
-  // v5 — Testimonials
-  // ==========================================================
-
   function renderTestimonials() {
     var grid = document.getElementById('testimonials-grid');
     if (!grid) return;
@@ -1269,10 +1147,6 @@
     grid.innerHTML = html;
   }
 
-  // ==========================================================
-  // v5 — Instagram feed
-  // ==========================================================
-
   function renderInstagramFeed() {
     var grid = document.getElementById('instagram-feed-grid');
     if (!grid) return;
@@ -1289,10 +1163,6 @@
     }
     grid.innerHTML = html;
   }
-
-  // ==========================================================
-  // v5 — Voucher
-  // ==========================================================
 
   var VOUCHER_STORAGE_KEY = 'batata_voucher';
   var VOUCHER_TTL_MS = 4 * 24 * 60 * 60 * 1000;
@@ -1314,9 +1184,7 @@
   function writeStoredVoucher(data) {
     try {
       window.localStorage.setItem(VOUCHER_STORAGE_KEY, JSON.stringify(data));
-    } catch (err) {
-      /* localStorage no disponible: el voucher solo vive durante esta sesión */
-    }
+    } catch (err) {}
   }
 
   function generateVoucherCode() {
@@ -1444,12 +1312,6 @@
     });
   }
 
-  // ==========================================================
-  // v6 — Education video lazy load
-  // Sólo carga el video cuando la sección entra en viewport, y solamente
-  // si el <source> está activo (Gabriel ya descomentó el archivo).
-  // ==========================================================
-
   function initEducationVideo() {
     var video = document.querySelector('.education__video');
     if (!video) return;
@@ -1488,22 +1350,16 @@
     }
   }
 
-  // ==========================================================
-  // Site nav — scroll, active state, offset
-  // ==========================================================
-
   function initSiteNav() {
     var nav = document.getElementById('site-nav');
     if (!nav) return;
 
-    // Keep content below the fixed nav
     function updateNavOffset() {
       document.body.style.paddingTop = nav.offsetHeight + 'px';
     }
     updateNavOffset();
     window.addEventListener('resize', updateNavOffset, { passive: true });
 
-    // Stronger shadow on scroll
     function handleNavScroll() {
       if (window.scrollY > 20) {
         nav.classList.add('scrolled');
@@ -1514,7 +1370,6 @@
     window.addEventListener('scroll', handleNavScroll, { passive: true });
     handleNavScroll();
 
-    // Smooth scroll — scroll-margin-top in CSS handles the offset
     var navLinks = document.querySelectorAll('.site-nav__link');
     for (var i = 0; i < navLinks.length; i++) {
       navLinks[i].addEventListener('click', function (e) {
@@ -1526,7 +1381,6 @@
       });
     }
 
-    // Logo: scroll to top
     var logo = document.querySelector('.site-nav__logo');
     if (logo) {
       logo.addEventListener('click', function (e) {
@@ -1535,7 +1389,6 @@
       });
     }
 
-    // Active state tracking
     var sectionIds = [];
     for (var j = 0; j < navLinks.length; j++) {
       sectionIds.push(navLinks[j].getAttribute('data-section'));
@@ -1567,10 +1420,6 @@
       }
     }
   }
-
-  // ==========================================================
-  // Hamburger menu (v24)
-  // ==========================================================
 
   function initHamburger() {
     var btn = document.getElementById('nav-hamburger');
@@ -1610,22 +1459,14 @@
     });
   }
 
-  // ==========================================================
-  // Cursos urgency (v23)
-  // ==========================================================
-
   function initCursosUrgency() {
     var spotsEl = document.getElementById('cursos-spots');
     var urgEl   = document.getElementById('cursos-urgency');
     if (!spotsEl || !urgEl) return;
-    var n = 3 + Math.floor(Math.random() * 3); // 3, 4 o 5
+    var n = 3 + Math.floor(Math.random() * 3);
     spotsEl.textContent = n;
     urgEl.hidden = false;
   }
-
-  // ==========================================================
-  // Init
-  // ==========================================================
 
   var statusInterval = null;
 
