@@ -3,6 +3,7 @@
 
   var GOOGLE_RATING = 4.8;
   var GOOGLE_REVIEW_COUNT = 285;
+  var FORZAR_POPUP_FINDE_PARA_PRUEBA = true;
 
   var SERVING_NOW = {
     espresso: {
@@ -160,6 +161,217 @@
   ];
 
   var INSTAGRAM_URL = 'https://www.instagram.com/batata.cofi/';
+
+  // ─── PASTELERÍA ESPECIAL DE FIN DE SEMANA ─────────────────────────────────
+
+  // Catálogo de especiales que rotan. Para activar/desactivar un finde:
+  // cambiá el "activo" de cada producto (true = se muestra este finde).
+  // Para agregar uno nuevo (primera vez que sale), copiá un bloque y completá
+  // name / desc / image / activo. La imagen va en la misma carpeta de tortas.
+  var WEEKEND_SPECIALS_CATALOG = [
+    {
+      id: 'placeholder-1',
+      name: 'Nombre del especial 1',
+      desc: 'Descripción corta y apetitosa del producto — qué lleva, qué lo hace especial.',
+      image: 'img/tortas/torta-batata-1.jpg',
+      price: '$8.500',
+      activo: true
+    },
+    {
+      id: 'placeholder-2',
+      name: 'Nombre del especial 2',
+      desc: 'Descripción corta y apetitosa del producto — qué lleva, qué lo hace especial.',
+      image: 'img/tortas/marquise-2.jpg',
+      price: '$8.500',
+      activo: true
+    },
+    {
+      id: 'placeholder-3',
+      name: 'Nombre del especial 3',
+      desc: 'Descripción corta y apetitosa del producto — qué lleva, qué lo hace especial.',
+      image: 'img/tortas/key-lime-2.jpg',
+      price: '$8.500',
+      activo: true
+    }
+  ];
+
+  // Guarda, por semana, desde qué producto arrancó el carrusel la última vez.
+  // Así, si el usuario vuelve a entrar en la misma visita del finde, el
+  // carrusel empieza en el siguiente producto — para que con varias visitas
+  // termine viendo todos los especiales, no siempre el primero.
+  var WEEKEND_START_INDEX_PREFIX = 'batata_weekend_specials_start_index_';
+
+  function getISOWeekKey(date) {
+    var d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    var dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    return d.getUTCFullYear() + '-W' + weekNo;
+  }
+
+  function isWeekendSpecialWindow(t) {
+    // Ventana: viernes desde las 16:00 hasta domingo a las 20:00
+    if (FORZAR_POPUP_FINDE_PARA_PRUEBA) return true;
+    var wd = t.weekday, m = t.timeInMinutes;
+    if (wd === 'friday' && m >= 960) return true;      // 16:00 = 960 min
+    if (wd === 'saturday') return true;
+    if (wd === 'sunday' && m < 1200) return true;       // 20:00 = 1200 min
+    return false;
+  }
+
+  function getWeekendStartIndex(weekKey, totalItems) {
+    try {
+      var raw = window.localStorage.getItem(WEEKEND_START_INDEX_PREFIX + weekKey);
+      var idx = raw ? parseInt(raw, 10) : 0;
+      if (isNaN(idx) || idx < 0) idx = 0;
+      return idx % totalItems;
+    } catch (err) { return 0; }
+  }
+
+  function advanceWeekendStartIndex(weekKey, currentIndex, totalItems) {
+    try {
+      var next = (currentIndex + 1) % totalItems;
+      window.localStorage.setItem(WEEKEND_START_INDEX_PREFIX + weekKey, String(next));
+    } catch (err) {}
+  }
+
+  function injectWeekendPopupStyles() {
+    if (document.getElementById('weekend-popup-styles')) return;
+    var style = document.createElement('style');
+    style.id = 'weekend-popup-styles';
+    style.textContent = ''
+      + '.weekend-popup__overlay{position:fixed;inset:0;background:rgba(26,26,26,0.55);display:flex;align-items:flex-end;justify-content:center;z-index:9998;opacity:0;transition:opacity .9s cubic-bezier(0.16,1,0.3,1);font-family:"Raleway",sans-serif;}'
+      + '.weekend-popup__overlay.is-visible{opacity:1;}'
+      + '.weekend-popup{width:100%;max-width:480px;background:#EDE4D8;border-radius:18px 18px 0 0;padding:24px 0 26px;position:relative;box-sizing:border-box;transform:translateY(100%);transition:transform 1s cubic-bezier(0.16,1,0.3,1);}'
+      + '.weekend-popup__overlay.is-visible .weekend-popup{transform:translateY(0);}'
+      + '.weekend-popup__close{position:absolute;top:14px;right:20px;background:none;border:none;font-size:22px;line-height:1;color:#1A1A1A;opacity:.4;cursor:pointer;padding:4px;z-index:2;}'
+      + '.weekend-popup__eyebrow{text-align:center;color:#8B2A4A;font-size:12px;letter-spacing:3px;text-transform:uppercase;margin:0 0 6px;padding:0 24px;}'
+      + '.weekend-popup__title{text-align:center;font-size:20px;font-weight:700;color:#1A1A1A;margin:0 0 18px;padding:0 24px;line-height:1.3;}'
+      + '.weekend-popup__carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding:0 24px 8px;scrollbar-width:none;}'
+      + '.weekend-popup__carousel::-webkit-scrollbar{display:none;}'
+      + '.weekend-popup__slide{flex:0 0 78%;scroll-snap-align:center;background:#ffffff;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.08);}'
+      + '.weekend-popup__slide-image{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}'
+      + '.weekend-popup__slide-body{padding:14px 16px 16px;}'
+      + '.weekend-popup__slide-name{font-size:16px;font-weight:700;color:#1A1A1A;margin:0 0 4px;}'
+      + '.weekend-popup__slide-desc{font-size:12.5px;color:rgba(26,26,26,0.65);line-height:1.4;margin:0 0 8px;}'
+      + '.weekend-popup__slide-price{font-size:14px;font-weight:700;color:#8B2A4A;margin:0;}'
+      + '.weekend-popup__dots{display:flex;justify-content:center;gap:6px;margin:14px 0 4px;}'
+      + '.weekend-popup__dot{width:6px;height:6px;border-radius:50%;background:rgba(26,26,26,0.2);transition:background .2s;}'
+      + '.weekend-popup__dot.is-active{background:#8B2A4A;}'
+      + '@media (min-width:640px){.weekend-popup__overlay{align-items:center;}.weekend-popup{border-radius:18px;}.weekend-popup__slide{flex:0 0 42%;}}';
+    document.head.appendChild(style);
+  }
+
+  function buildWeekendPopupMarkup(items) {
+    var slidesHtml = '';
+    var dotsHtml = '';
+    for (var i = 0; i < items.length; i++) {
+      var it = items[i];
+      slidesHtml += '<div class="weekend-popup__slide" data-slide-index="' + i + '">'
+        + '<img class="weekend-popup__slide-image" src="' + it.image + '" alt="' + it.name + '" loading="lazy">'
+        + '<div class="weekend-popup__slide-body">'
+        + '<p class="weekend-popup__slide-name">' + it.name + '</p>'
+        + '<p class="weekend-popup__slide-desc">' + it.desc + '</p>'
+        + '<p class="weekend-popup__slide-price">' + it.price + '</p>'
+        + '</div>'
+        + '</div>';
+      dotsHtml += '<span class="weekend-popup__dot" data-dot-index="' + i + '"></span>';
+    }
+    return ''
+      + '<div class="weekend-popup__overlay" id="weekend-popup-overlay">'
+      + '  <div class="weekend-popup" role="dialog" aria-modal="true" aria-labelledby="weekend-popup-title">'
+      + '    <button class="weekend-popup__close" id="weekend-popup-close" aria-label="Cerrar">&times;</button>'
+      + '    <p class="weekend-popup__eyebrow">Pastelería del finde</p>'
+      + '    <h2 class="weekend-popup__title" id="weekend-popup-title">Estos son los especiales de esta semana</h2>'
+      + '    <div class="weekend-popup__carousel" id="weekend-popup-carousel">' + slidesHtml + '</div>'
+      + '    <div class="weekend-popup__dots" id="weekend-popup-dots">' + dotsHtml + '</div>'
+      + '  </div>'
+      + '</div>';
+  }
+
+  function showWeekendSpecialsPopup(items, startIndex, onClose) {
+    injectWeekendPopupStyles();
+    var wrapper = document.createElement('div');
+    wrapper.innerHTML = buildWeekendPopupMarkup(items);
+    document.body.appendChild(wrapper.firstChild);
+
+    var overlay  = document.getElementById('weekend-popup-overlay');
+    var closeBtn = document.getElementById('weekend-popup-close');
+    var carousel = document.getElementById('weekend-popup-carousel');
+    var dots     = document.querySelectorAll('#weekend-popup-dots .weekend-popup__dot');
+
+    function setActiveDot(index) {
+      for (var k = 0; k < dots.length; k++) {
+        dots[k].classList.toggle('is-active', k === index);
+      }
+    }
+
+    requestAnimationFrame(function () {
+      overlay.classList.add('is-visible');
+      // Posicionar el carrusel en el producto que corresponde mostrar primero
+      if (carousel && startIndex > 0) {
+        var targetSlide = carousel.querySelectorAll('.weekend-popup__slide')[startIndex];
+        if (targetSlide) {
+          setTimeout(function () {
+            carousel.scrollLeft = targetSlide.offsetLeft - carousel.offsetLeft;
+          }, 50);
+        }
+      }
+      setActiveDot(startIndex);
+    });
+
+    if (carousel && dots.length) {
+      carousel.addEventListener('scroll', function () {
+        var slide = carousel.querySelector('.weekend-popup__slide');
+        var slideWidth = slide ? slide.offsetWidth + 14 : carousel.offsetWidth;
+        var activeIndex = Math.round(carousel.scrollLeft / slideWidth);
+        setActiveDot(activeIndex);
+      }, { passive: true });
+    }
+
+    function closePopup() {
+      overlay.classList.remove('is-visible');
+      setTimeout(function () {
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        if (typeof onClose === 'function') onClose();
+      }, 1000);
+    }
+
+    closeBtn.addEventListener('click', closePopup);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closePopup(); });
+    document.addEventListener('keydown', function escListener(e) {
+      if (e.key === 'Escape') { closePopup(); document.removeEventListener('keydown', escListener); }
+    });
+  }
+
+  function initWeekendSpecialsPopup(afterCloseCallback) {
+    var t = getBuenosAiresTime();
+
+    if (!isWeekendSpecialWindow(t)) {
+      afterCloseCallback();
+      return;
+    }
+
+    var activeItems = WEEKEND_SPECIALS_CATALOG.filter(function (item) { return item.activo; });
+    if (activeItems.length === 0) {
+      afterCloseCallback();
+      return;
+    }
+
+    var weekKey = getISOWeekKey(new Date());
+    var startIndex = getWeekendStartIndex(weekKey, activeItems.length);
+
+    // Se muestra SIEMPRE que corresponda por horario — no se guarda estado
+    // de "ya lo cerraste, no te lo muestro más". Lo único que persiste es
+    // desde qué producto arranca el carrusel la próxima vez.
+    showWeekendSpecialsPopup(activeItems, startIndex, function () {
+      advanceWeekendStartIndex(weekKey, startIndex, activeItems.length);
+      afterCloseCallback();
+    });
+  }
+
+  // ─── FIN PASTELERÍA ESPECIAL DE FIN DE SEMANA ─────────────────────────────
 
   var COMBOS_BY_TIMESLOT = {
     manana: {
@@ -1479,6 +1691,7 @@
     var ratingTextEl = document.querySelector('.hero__rating-text');
     if (ratingTextEl) {
       ratingTextEl.innerHTML = '<strong>' + GOOGLE_RATING + '</strong> · ' + GOOGLE_REVIEW_COUNT + ' reseñas en Google';
+    initWeekendSpecialsPopup(function () {});
     }
 
     renderBanner(bannerContent(t));
